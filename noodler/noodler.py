@@ -47,7 +47,14 @@ def noodlify_query(query: SingleSEQuery) -> Sequence[SegAut]:
 
     lefts: SegAut = query.automata_for_side("left")
     right: Aut = query.proper_aut("right")
-    return mata.Nfa.noodlify_for_equation(lefts, right, {"reduce": "forward"}) # {"reduce": "bidirectional"}
+    print("START: ", query.eq)
+    # for left in lefts:
+    #     print(left)
+    # print(right)
+    vars_locations = []
+    for left_var in query.eq.get_vars_side("left"):
+        vars_locations.append(query.eq.indices_l[left_var])
+    return mata.Nfa.noodlify_for_equation(lefts, right, vars_locations, params = {"reduce": "forward"}) # {"reduce": "bidirectional"}
 
 
     # left: SegAut = query.seg_aut("left")
