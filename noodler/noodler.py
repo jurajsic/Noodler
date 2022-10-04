@@ -47,7 +47,7 @@ def noodlify_query(query: SingleSEQuery) -> Sequence[SegAut]:
 
     lefts: SegAut = query.automata_for_side("left")
     right: Aut = query.proper_aut("right")
-    print("START: ", query.eq, flush=True)
+    # print("START: ", query.eq, flush=True)
     # for left in lefts:
     #     print(left)
     # print(right)
